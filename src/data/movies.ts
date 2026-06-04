@@ -105,8 +105,8 @@ export const MOVIES: Movie[] = [
       {
         day: "june13",
         dayLabel: "13 июня",
-        time: "11:00",
-        timeMinutes: 660,
+        time: "14:00",
+        timeMinutes: 840,
         date: { month: 6, day: 13 },
       },
     ],

@@ -78,13 +78,11 @@ export const MOVIES: Movie[] = [
     poster:
       "https://cdn.poehali.dev/projects/848725dc-7e78-45d6-bbe4-50e88ecc1b68/bucket/fdacd1d2-6007-4166-828f-213627c7f477.jpeg",
     sessions: [
-      {
-        day: "june6",
-        dayLabel: "6 июня",
-        time: "14:00",
-        timeMinutes: 840,
-        date: { month: 6, day: 6 },
-      },
+      { day: "june6",  dayLabel: "6 июня",  time: "14:00", timeMinutes: 840, date: { month: 6, day: 6 } },
+      { day: "june13", dayLabel: "13 июня", time: "14:00", timeMinutes: 840, date: { month: 6, day: 13 } },
+      { day: "june20", dayLabel: "20 июня", time: "14:00", timeMinutes: 840, date: { month: 6, day: 20 } },
+      { day: "july18", dayLabel: "18 июля", time: "14:00", timeMinutes: 840, date: { month: 7, day: 18 } },
+      { day: "july25", dayLabel: "25 июля", time: "14:00", timeMinutes: 840, date: { month: 7, day: 25 } },
     ],
   },
   {
@@ -100,13 +98,10 @@ export const MOVIES: Movie[] = [
     poster:
       "https://cdn.poehali.dev/projects/848725dc-7e78-45d6-bbe4-50e88ecc1b68/bucket/10d36d63-2eb3-4c62-91cd-385d3817a493.jpeg",
     sessions: [
-      {
-        day: "june13",
-        dayLabel: "13 июня",
-        time: "11:00",
-        timeMinutes: 660,
-        date: { month: 6, day: 13 },
-      },
+      { day: "june13", dayLabel: "13 июня", time: "11:00", timeMinutes: 660, date: { month: 6, day: 13 } },
+      { day: "june20", dayLabel: "20 июня", time: "11:00", timeMinutes: 660, date: { month: 6, day: 20 } },
+      { day: "july18", dayLabel: "18 июля", time: "11:00", timeMinutes: 660, date: { month: 7, day: 18 } },
+      { day: "july25", dayLabel: "25 июля", time: "11:00", timeMinutes: 660, date: { month: 7, day: 25 } },
     ],
     comingSoon: true,
   },
@@ -123,13 +118,10 @@ export const MOVIES: Movie[] = [
     poster:
       "https://cdn.poehali.dev/projects/848725dc-7e78-45d6-bbe4-50e88ecc1b68/bucket/2c12c37a-5757-4f69-9b1e-fb2cf42d69ab.jpg",
     sessions: [
-      {
-        day: "june13",
-        dayLabel: "13 июня",
-        time: "14:00",
-        timeMinutes: 840,
-        date: { month: 6, day: 13 },
-      },
+      { day: "june13", dayLabel: "13 июня", time: "14:00", timeMinutes: 840, date: { month: 6, day: 13 } },
+      { day: "june20", dayLabel: "20 июня", time: "14:00", timeMinutes: 840, date: { month: 6, day: 20 } },
+      { day: "july18", dayLabel: "18 июля", time: "14:00", timeMinutes: 840, date: { month: 7, day: 18 } },
+      { day: "july25", dayLabel: "25 июля", time: "14:00", timeMinutes: 840, date: { month: 7, day: 25 } },
     ],
     comingSoon: true,
   },

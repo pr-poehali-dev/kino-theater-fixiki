@@ -3,16 +3,11 @@ import { useLiveClock } from "@/hooks/useLiveClock";
 import Icon from "@/components/ui/icon";
 
 const SCHEDULE_DAYS = [
-  {
-    key: "june6",
-    label: "6 июня",
-    description: "Суббота",
-  },
-  {
-    key: "june13",
-    label: "13 июня",
-    description: "Суббота",
-  },
+  { key: "june6",  label: "6 июня",  description: "Суббота" },
+  { key: "june13", label: "13 июня", description: "Суббота" },
+  { key: "june20", label: "20 июня", description: "Суббота" },
+  { key: "july18", label: "18 июля", description: "Суббота" },
+  { key: "july25", label: "25 июля", description: "Суббота" },
 ];
 
 export default function ScheduleSection() {

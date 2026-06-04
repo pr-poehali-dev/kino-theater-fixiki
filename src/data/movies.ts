@@ -42,6 +42,27 @@ export const MOVIES: Movie[] = [
         timeMinutes: 660,
         date: { month: 6, day: 6 },
       },
+      {
+        day: "june20",
+        dayLabel: "20 июня",
+        time: "11:00",
+        timeMinutes: 660,
+        date: { month: 6, day: 20 },
+      },
+      {
+        day: "july18",
+        dayLabel: "18 июля",
+        time: "11:00",
+        timeMinutes: 660,
+        date: { month: 7, day: 18 },
+      },
+      {
+        day: "july25",
+        dayLabel: "25 июля",
+        time: "11:00",
+        timeMinutes: 660,
+        date: { month: 7, day: 25 },
+      },
     ],
   },
   {

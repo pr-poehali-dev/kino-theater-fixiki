@@ -36,11 +36,11 @@ export const MOVIES: Movie[] = [
       "https://cdn.poehali.dev/projects/848725dc-7e78-45d6-bbe4-50e88ecc1b68/bucket/b28946ab-4680-46f0-be96-99fdb12c05e7.jpg",
     sessions: [
       {
-        day: "june7",
-        dayLabel: "7 июня",
+        day: "june6",
+        dayLabel: "6 июня",
         time: "11:00",
         timeMinutes: 660,
-        date: { month: 6, day: 7 },
+        date: { month: 6, day: 6 },
       },
     ],
   },
@@ -58,11 +58,11 @@ export const MOVIES: Movie[] = [
       "https://cdn.poehali.dev/projects/848725dc-7e78-45d6-bbe4-50e88ecc1b68/bucket/fdacd1d2-6007-4166-828f-213627c7f477.jpeg",
     sessions: [
       {
-        day: "june7",
-        dayLabel: "7 июня",
+        day: "june6",
+        dayLabel: "6 июня",
         time: "14:00",
         timeMinutes: 840,
-        date: { month: 6, day: 7 },
+        date: { month: 6, day: 6 },
       },
     ],
   },

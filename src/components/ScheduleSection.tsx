@@ -4,8 +4,8 @@ import Icon from "@/components/ui/icon";
 
 const SCHEDULE_DAYS = [
   {
-    key: "june7",
-    label: "7 июня",
+    key: "june6",
+    label: "6 июня",
     description: "Суббота",
   },
   {

@@ -167,6 +167,27 @@ export function getSessionStatus(
   return null;
 }
 
+// Возвращает минуты до ближайшего сеанса сегодня (если он ещё не начался)
+export function getSessionCountdown(
+  movie: Movie,
+  nowMinutes: number,
+  monthNum: number,
+  dateNum: number
+): { minutesLeft: number; sessionTime: string } | null {
+  for (const session of movie.sessions) {
+    if (sessionMatchesDate(session, monthNum, dateNum)) {
+      const start = session.timeMinutes;
+      if (nowMinutes < start) {
+        return {
+          minutesLeft: start - nowMinutes,
+          sessionTime: session.time,
+        };
+      }
+    }
+  }
+  return null;
+}
+
 export function formatDuration(minutes: number): string {
   const h = Math.floor(minutes / 60);
   const m = minutes % 60;

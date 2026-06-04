@@ -1,4 +1,4 @@
-import { MOVIES, getSessionStatus, formatDuration } from "@/data/movies";
+import { MOVIES, getSessionStatus, getSessionCountdown, formatDuration } from "@/data/movies";
 import { useLiveClock } from "@/hooks/useLiveClock";
 import Icon from "@/components/ui/icon";
 
@@ -47,6 +47,7 @@ export default function ScheduleSection() {
                       const session = movie.sessions.find((s) => s.day === dayInfo.key)!;
                       const liveStatus = getSessionStatus(movie, totalMinutes, monthNum, dateNum);
                       const isLive = !!liveStatus;
+                      const countdown = !isLive ? getSessionCountdown(movie, totalMinutes, monthNum, dateNum) : null;
 
                       const endMinutes = session.timeMinutes + movie.duration;
                       const endH = Math.floor(endMinutes / 60);
@@ -96,7 +97,7 @@ export default function ScheduleSection() {
                             {isLive && liveStatus && (
                               <div className="mt-2 space-y-1.5">
                                 <div className="text-xs text-red-300 font-medium">
-                                  Идёт сеанс — ещё <span className="font-bold text-red-400">{liveStatus.remaining} минут</span> до конца
+                                  Идёт сеанс — ещё <span className="font-bold text-red-400">{liveStatus.remaining} мин</span> до конца
                                 </div>
                                 <div className="h-1.5 bg-muted rounded-full overflow-hidden">
                                   <div
@@ -106,6 +107,12 @@ export default function ScheduleSection() {
                                     }}
                                   />
                                 </div>
+                              </div>
+                            )}
+                            {countdown && (
+                              <div className="mt-1.5 flex items-center gap-1 text-xs text-[hsl(var(--cinema-gold))]">
+                                <Icon name="Clock" size={11} className="shrink-0" />
+                                ещё <span className="font-bold">{countdown.minutesLeft} мин</span> до начала
                               </div>
                             )}
                           </div>

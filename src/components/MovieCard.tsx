@@ -1,4 +1,4 @@
-import { Movie, getSessionStatus, formatDuration } from "@/data/movies";
+import { Movie, getSessionStatus, getSessionCountdown, formatDuration } from "@/data/movies";
 import { useLiveClock } from "@/hooks/useLiveClock";
 import Icon from "@/components/ui/icon";
 
@@ -10,6 +10,7 @@ interface MovieCardProps {
 export default function MovieCard({ movie, onClick }: MovieCardProps) {
   const { totalMinutes, monthNum, dateNum } = useLiveClock();
   const liveStatus = getSessionStatus(movie, totalMinutes, monthNum, dateNum);
+  const countdown = !liveStatus ? getSessionCountdown(movie, totalMinutes, monthNum, dateNum) : null;
 
   return (
     <div
@@ -72,22 +73,37 @@ export default function MovieCard({ movie, onClick }: MovieCardProps) {
               s.date.month === monthNum &&
               s.date.day === dateNum;
 
+            const isThisCountdown =
+              countdown &&
+              countdown.sessionTime === s.time &&
+              s.date.month === monthNum &&
+              s.date.day === dateNum;
+
             return (
-              <div
-                key={i}
-                className={`flex items-center justify-between px-3 py-2 rounded-xl text-sm font-semibold ${
-                  isThisLive
-                    ? "bg-red-600/20 border border-red-500/50 text-red-400"
-                    : "bg-muted border border-border text-foreground"
-                }`}
-              >
-                <span className="text-xs text-muted-foreground font-normal">{s.dayLabel}</span>
-                <span>{s.time}</span>
+              <div key={i} className="space-y-1">
+                <div
+                  className={`flex items-center justify-between px-3 py-2 rounded-xl text-sm font-semibold ${
+                    isThisLive
+                      ? "bg-red-600/20 border border-red-500/50 text-red-400"
+                      : isThisCountdown
+                      ? "bg-[hsl(var(--cinema-gold))]/10 border border-[hsl(var(--cinema-gold))]/40 text-[hsl(var(--cinema-gold))]"
+                      : "bg-muted border border-border text-foreground"
+                  }`}
+                >
+                  <span className="text-xs text-muted-foreground font-normal">{s.dayLabel}</span>
+                  <span>{s.time}</span>
+                </div>
                 {isThisLive && liveStatus && (
-                  <span className="text-xs text-red-400 flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-red-400 pulse-dot" />
-                    ещё {liveStatus.remaining} мин до конца
-                  </span>
+                  <div className="flex items-center gap-1 text-xs text-red-400 px-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-400 pulse-dot shrink-0" />
+                    ещё <span className="font-bold">{liveStatus.remaining} мин</span> до конца
+                  </div>
+                )}
+                {isThisCountdown && countdown && (
+                  <div className="flex items-center gap-1 text-xs text-[hsl(var(--cinema-gold))] px-1">
+                    <Icon name="Clock" size={11} className="shrink-0" />
+                    ещё <span className="font-bold">{countdown.minutesLeft} мин</span> до начала
+                  </div>
                 )}
               </div>
             );

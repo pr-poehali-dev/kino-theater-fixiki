@@ -94,14 +94,13 @@ export default function ScheduleSection() {
                               <span>{movie.genre}</span>
                             </div>
                             {isLive && liveStatus && (
-                              <div className="mt-2">
-                                <div className="flex justify-between text-xs text-red-400 mb-1">
-                                  <span>Прошло {liveStatus.elapsed} мин</span>
-                                  <span>Осталось {liveStatus.remaining} мин</span>
+                              <div className="mt-2 space-y-1.5">
+                                <div className="text-xs text-red-300 font-medium">
+                                  Идёт сеанс — ещё <span className="font-bold text-red-400">{liveStatus.remaining} минут</span> до конца
                                 </div>
                                 <div className="h-1.5 bg-muted rounded-full overflow-hidden">
                                   <div
-                                    className="h-full bg-red-500 rounded-full transition-all duration-60000"
+                                    className="h-full bg-red-500 rounded-full"
                                     style={{
                                       width: `${Math.round((liveStatus.elapsed / movie.duration) * 100)}%`,
                                     }}

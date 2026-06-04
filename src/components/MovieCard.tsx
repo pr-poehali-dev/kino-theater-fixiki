@@ -86,7 +86,7 @@ export default function MovieCard({ movie, onClick }: MovieCardProps) {
                 {isThisLive && liveStatus && (
                   <span className="text-xs text-red-400 flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-red-400 pulse-dot" />
-                    осталось {liveStatus.remaining} мин
+                    ещё {liveStatus.remaining} мин до конца
                   </span>
                 )}
               </div>

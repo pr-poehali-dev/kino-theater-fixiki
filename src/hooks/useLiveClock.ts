@@ -33,7 +33,7 @@ export function useLiveClock(): ClockData {
 
   const days = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
   const months = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
-  const dateString = `${days[dayOfWeek]}, ${dateNum} ${months[now.getMonth()]}`;
+  const dateString = `${days[dayOfWeek]}, ${dateNum} ${months[now.getMonth()]} ${now.getFullYear()}`;
 
   const totalMinutes = hours * 60 + minutes;
   const isOpen = hours >= 10 && hours < 23;

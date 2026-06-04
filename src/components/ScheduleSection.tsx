@@ -4,19 +4,19 @@ import Icon from "@/components/ui/icon";
 
 const SCHEDULE_DAYS = [
   {
-    key: "saturday",
-    label: "Суббота",
-    description: "Ближайшая суббота",
+    key: "june7",
+    label: "7 июня",
+    description: "Суббота",
   },
   {
     key: "june13",
     label: "13 июня",
-    description: "Пятница",
+    description: "Суббота",
   },
 ];
 
 export default function ScheduleSection() {
-  const { totalMinutes, dayOfWeek, dateNum } = useLiveClock();
+  const { totalMinutes, monthNum, dateNum } = useLiveClock();
 
   return (
     <section id="schedule" className="py-16 px-4">
@@ -50,7 +50,7 @@ export default function ScheduleSection() {
                     .sort((a, b) => a.sessions[0].timeMinutes - b.sessions[0].timeMinutes)
                     .map((movie) => {
                       const session = movie.sessions.find((s) => s.day === dayInfo.key)!;
-                      const liveStatus = getSessionStatus(movie, totalMinutes, dayOfWeek, dateNum);
+                      const liveStatus = getSessionStatus(movie, totalMinutes, monthNum, dateNum);
                       const isLive = !!liveStatus;
 
                       const endMinutes = session.timeMinutes + movie.duration;

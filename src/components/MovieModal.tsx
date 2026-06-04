@@ -8,11 +8,11 @@ interface MovieModalProps {
 }
 
 export default function MovieModal({ movie, onClose }: MovieModalProps) {
-  const { totalMinutes, dayOfWeek, dateNum } = useLiveClock();
+  const { totalMinutes, monthNum, dateNum } = useLiveClock();
 
   if (!movie) return null;
 
-  const liveStatus = getSessionStatus(movie, totalMinutes, dayOfWeek, dateNum);
+  const liveStatus = getSessionStatus(movie, totalMinutes, monthNum, dateNum);
 
   return (
     <div
@@ -85,7 +85,8 @@ export default function MovieModal({ movie, onClose }: MovieModalProps) {
                 const isThisLive =
                   liveStatus &&
                   liveStatus.sessionTime === s.time &&
-                  ((dayOfWeek === 6 && s.day === "saturday") || (dateNum === 13 && s.day === "june13"));
+                  s.date.month === monthNum &&
+                  s.date.day === dateNum;
 
                 return (
                   <div

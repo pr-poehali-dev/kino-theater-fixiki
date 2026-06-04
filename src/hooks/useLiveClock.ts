@@ -7,6 +7,7 @@ export interface ClockData {
   timeString: string;
   dateString: string;
   dayOfWeek: number;
+  monthNum: number; // 1-based
   dateNum: number;
   totalMinutes: number;
   isOpen: boolean;
@@ -25,6 +26,7 @@ export function useLiveClock(): ClockData {
   const seconds = now.getSeconds();
   const dayOfWeek = now.getDay();
   const dateNum = now.getDate();
+  const monthNum = now.getMonth() + 1; // 1-based
 
   const pad = (n: number) => String(n).padStart(2, "0");
   const timeString = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
@@ -43,6 +45,7 @@ export function useLiveClock(): ClockData {
     timeString,
     dateString,
     dayOfWeek,
+    monthNum,
     dateNum,
     totalMinutes,
     isOpen,

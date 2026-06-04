@@ -13,10 +13,12 @@ export interface Movie {
 }
 
 export interface Session {
-  day: string; // 'saturday' | 'june13'
+  day: string; // ключ для группировки в расписании
   dayLabel: string;
   time: string; // "HH:MM"
   timeMinutes: number; // total minutes from midnight
+  // Конкретная дата сеанса
+  date: { month: number; day: number }; // month: 1-based
 }
 
 export const MOVIES: Movie[] = [
@@ -34,10 +36,11 @@ export const MOVIES: Movie[] = [
       "https://cdn.poehali.dev/projects/848725dc-7e78-45d6-bbe4-50e88ecc1b68/bucket/b28946ab-4680-46f0-be96-99fdb12c05e7.jpg",
     sessions: [
       {
-        day: "saturday",
-        dayLabel: "Суббота",
+        day: "june7",
+        dayLabel: "7 июня",
         time: "11:00",
         timeMinutes: 660,
+        date: { month: 6, day: 7 },
       },
     ],
   },
@@ -55,10 +58,11 @@ export const MOVIES: Movie[] = [
       "https://cdn.poehali.dev/projects/848725dc-7e78-45d6-bbe4-50e88ecc1b68/bucket/fdacd1d2-6007-4166-828f-213627c7f477.jpeg",
     sessions: [
       {
-        day: "saturday",
-        dayLabel: "Суббота",
+        day: "june7",
+        dayLabel: "7 июня",
         time: "14:00",
         timeMinutes: 840,
+        date: { month: 6, day: 7 },
       },
     ],
   },
@@ -80,6 +84,7 @@ export const MOVIES: Movie[] = [
         dayLabel: "13 июня",
         time: "11:00",
         timeMinutes: 660,
+        date: { month: 6, day: 13 },
       },
     ],
     comingSoon: true,
@@ -102,23 +107,30 @@ export const MOVIES: Movie[] = [
         dayLabel: "13 июня",
         time: "11:00",
         timeMinutes: 660,
+        date: { month: 6, day: 13 },
       },
     ],
     comingSoon: true,
   },
 ];
 
+// Проверяет совпадение по конкретной дате (месяц + день)
+function sessionMatchesDate(
+  session: Session,
+  monthNum: number, // 1-based
+  dateNum: number
+): boolean {
+  return session.date.month === monthNum && session.date.day === dateNum;
+}
+
 export function getSessionStatus(
   movie: Movie,
   nowMinutes: number,
-  dayOfWeek: number,
+  monthNum: number,
   dateNum: number
 ): { isLive: boolean; elapsed: number; remaining: number; sessionTime: string } | null {
   for (const session of movie.sessions) {
-    const isSaturday = dayOfWeek === 6 && session.day === "saturday";
-    const isJune13 = dateNum === 13 && session.day === "june13";
-
-    if (isSaturday || isJune13) {
+    if (sessionMatchesDate(session, monthNum, dateNum)) {
       const start = session.timeMinutes;
       const end = start + movie.duration;
       if (nowMinutes >= start && nowMinutes < end) {
